@@ -1,0 +1,40 @@
+__author__ = "Shijin MS"
+Bank_account = {}
+account_holders = {}
+account_id = 1000
+while True:
+    need = input("1) create new account 2) Checking balance 3)With draw money 4) Account holders details")
+
+    if need == "1":
+        if (bool(account_holders) and all(account_holders.values())) == True:
+            account_id += 1
+            name= input("Enter the user name")
+            balance = int(input(" enter the opening balance"))
+            user_address = input("Enter the addresss")
+            account_holders = {account_id: {"name": name, "balance": balance, "person_address": user_address}}
+            Bank_account.update(account_holders)
+            print(account_holders)
+        else:
+            name= input("Enter the user name")
+            balance = int(input(" enter the opening balance"))
+            user_address = input("Enter the addresss")
+            account_holders = {account_id: {"name": name, "balance": balance, "person_address": user_address}}
+            Bank_account.update(account_holders)
+            print(account_holders)
+
+    elif need == "2":
+        account_number = int(input("enter the account number"))
+        print("Balance is ",Bank_account[account_number]["balance"])
+        print("block2")
+    elif need == "3":
+        account_number = int(input("enter the account number"))
+        withdraw = int(input("enter the money you want to withdraw"))
+        if Bank_account[account_number]["balance"] < withdraw:
+            print("insuffient balance")
+        else:
+            Bank_account[account_number]["balance"] = Bank_account[account_number]["balance"] - withdraw
+            print(" your balance is ",Bank_account[account_number]["balance"])
+        print("block 3")
+    elif need == "4":
+
+        print(Bank_account)
